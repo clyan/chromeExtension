@@ -1,0 +1,58 @@
+{
+
+  "manifest_version": 2,
+  "name": "demo",
+  "version": "1.0.1",
+  "description": "简单的Chrome扩展demo",
+  "iconsDec": "图标，一般偷懒全部用一个尺寸的也没问题",
+  "icons":
+  {
+    "16": "img/icon.png",
+    "48": "img/icon.png",
+    "128": "img/icon.png"
+  },
+  "background":
+  {
+    "page": "background.html"
+  },
+  "browser_action":
+  {
+    "default_icon": "img/icon.png",
+    "default_title": "这是一个示例Chrome插件",
+    "default_popup": "popup.html"
+  },
+  "content_scripts":
+  [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/test.js"],
+      "css": ["css/test.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions":
+  [
+    "contextMenus",
+    "tabs",
+    "notifications",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "web_accessible_resources": ["js/inject.js"],
+  "homepage_url": "https://www.baidu.com",
+  "chrome_url_overrides":
+  {
+    "newtab": "newtab.html"
+  },
+  "options_page": "newtab.html",
+  "options_ui":
+  {
+    "page": "options.html",
+    "chrome_style": true
+  },
+  "omnibox": { "keyword" : "go" },
+  "devtools_page": "devtools.html"
+}
